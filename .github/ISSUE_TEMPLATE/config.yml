@@ -1,0 +1,6 @@
+contact_links:
+    - name: Get help
+      url: https://github.com/Blog404DE/platformio-vcode-osx/issues
+      about: If you need help using this App, please contact jens [at] blog404.de
+
+blank_issues_enabled: false
