@@ -37,17 +37,21 @@ else
 
         echo "PROGRESS:40%"
         echo "Checking for PlatformIO Plugin"
-        "/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME}  --list-extensions | grep 'platformio.platformio-ide' &> /dev/null
+        "/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME}  --list-extensions | grep 'platformio.platformio-ide'  &>/dev/null  2>/dev/null
         if [ $? == 0 ]; then
                 echo "PlatformIO Plugin found"
         else
                 echo "PlatformIO Plugin missing: starting installation"
-                "/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME} --install-extension 'platformio.platformio-ide'
+				echo "NOTIFICATION:PlatformIO Plugin missing: starting installation of PlatformIO"
+                "/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME} --install-extension 'platformio.platformio-ide' --log off 2>/dev/null &>/dev/null
+				if [ $? -ne 0 ]; then { echo "ALERT:Failed to install PlatformIO extension." ; exit 1; } fi
+
         fi
         echo "PROGRESS:60%"
 
         echo "Loading PlatformIO for Visual Studio Code."
-        $("/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME} $@)
+        $("/${MAIN_VSCODE_EXEC}/Contents/Resources/app/bin/code" --extensions-dir ${VSCODE_HOME} --log off 2>/dev/null &>/dev/null $@)
+		if [ $? -ne 0 ]; then { echo "ALERT:Failed to start Visual Studio Code." ; exit 1; } fi
         sleep .5
         echo "PROGRESS:100%"
 fi
