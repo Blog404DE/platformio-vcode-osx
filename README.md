@@ -33,17 +33,18 @@ This was created using the open source [Platypus](https://sveinbjorn.org/platypu
 	
 3. Can I run both standard Visual Studio Code and PlatformIO Atom instances together?
 
-   Unfortunately, no, not at this time. Reason being is that it appears [Visual Studio Code](https://code.visualstudio.com) did not allow to open another instance.
+	Unfortunately, no, not at this time. Reason being is that it appears [Visual Studio Code](https://code.visualstudio.com) did not allow to open another instance.
    
 4. How does this application find the Atom.app to use?
 
-   Just like in the shell script code used by the core of [Visual Studio Code](https://code.visualstudio.com), spotlight search is used to locate the correct `Visual Studio Code.app` or whatever custom name you have used (it searches for `com.microsoft.VSCode` bundle identifier)
+	Just like in the shell script code used by the core of [Visual Studio Code](https://code.visualstudio.com), spotlight search is used to locate the correct `Visual Studio Code.app` or whatever custom name you have used (it searches for `com.microsoft.VSCode` bundle identifier)
    
 5. It says I have to install Visual Studio Code, but it's already installed?
 
-   Make sure you have moved the file to `Applications` and try again
+	Make sure you have moved the file to `Applications` and try again.
    
---
+---
+
 ##### License information:
 
 This project is not affiliated with PlatformIO Labs (PlatformIO) and Microsoft (Visual Studio Code) and the repository contains neither the PlatformIO extension nor Visual Studio Code. The copyright for PlatformIO and Visual Studio Code is held by the respective rights holders. This also applies to the two components of the Application Launcher icon.
